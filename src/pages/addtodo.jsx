@@ -178,9 +178,9 @@ const all=useSelector(state =>state?.todo.all)
       <div>
         <div>
           <br />
-          <label htmlFor="">Enter the Title</label>
+          <label htmlFor="">Title</label>
           <TextField value={title} onChange={(e) => setTitle(e.target.value)} id="outlined-basic" label="Title" variant="outlined" /><br /><br />
-          <label htmlFor="">Enter Description</label>
+          <label htmlFor="">Description</label>
           <TextareaAutosize value={desc} onChange={(e) => setDesc(e.target.value)} minRows={5} aria-label="empty textarea"placeholder="Description" style={{ width: 200 }}/> <br /><br />
         </div>
         <div>

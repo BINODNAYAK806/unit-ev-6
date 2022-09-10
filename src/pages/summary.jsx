@@ -15,6 +15,7 @@ const Summary = () => {
 
 
 
+
  
   const profileData = useSelector(state => state?.auth.profile)
   const token = useSelector(state => state?.auth.token)
@@ -45,71 +46,9 @@ const Summary = () => {
 
   return (
     (!token) ? <Navigate to='/login' /> : <div className='addtodocontainer'>
-      <div className='profile_div'>
-      
-      <div className='profile' style={{border:"2px solid teal"}}>
-        <div style={{backgroundColor:"teal"}}>
-          <h2>User Details</h2>
-        </div>
-        <hr />
-        <div>
-            <div><h3>Name -{`${profileData.name}`}</h3></div>
-            <div><h3> Email -{`${profileData.email}`}</h3></div>
-            <div><h3>User name -{`${profileData.username}`}</h3></div>
-            <div><h3>Mobile -{`${profileData.mobile}`}</h3></div>
-            <div><h3>Description -{`${profileData.description}`}</h3></div>
-          </div>
+     
+<div >
 
-       <div className='count_number'>
-          <div className='count_all'>
-            <h3>All</h3>
-            <h3>{all}</h3>
-          </div>
-            <div className='count_personal'>
-              <h3>
-                Personal
-              </h3>
-              <h3>{personal}</h3>
-            </div>
-            <div className='count_official'>
-              <h3>Ofricial</h3>
-              <h3>{official}</h3>
-            </div>
-            <div className='count_other'>
-              <h3>Others</h3>
-              <h3>{other}</h3>
-            </div>
-
-          </div>
-          <div>
-            <button className='logout_button' onClick={() => handleLogout()} variant="contained">LOGOUT</button>
-          </div>
-      </div>
-    </div>
-<div className='entry_container'>
-<div className='count_todo_cont'>
-
-<div className=''>
-              <h3>SUMMARY</h3>
-           
-            </div>
-          <div className='count_todo'>
-            <h3>TODO</h3>
-            <h3>{todo_count}</h3>
-          </div>
-            <div className='count_done'>
-              <h3>
-                DONE
-              </h3>
-              <h3>{done}</h3>
-            </div>
-            <div className='count_progress'>
-              <h3>IN PROGRESS</h3>
-              <h3>{progress}</h3>
-            </div>
-            
-
-          </div>
 
 </div>
     </div>

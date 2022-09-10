@@ -15,10 +15,24 @@ const Home = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  
- 
+  const [products, setProducts] = React.useState([]);
 
+ 
+  React.useEffect(() => {
+    fetch(`http://localhost:3002/products`)
+      .then((res) => res.json())
+      .then((res) => setProducts(res))
+      .catch((err) => console.log(err));
+  }, []);
     
+
+
+
+
+
+
+
+
 
   //  console.log(profileData)
     // const profileData = useSelector(state => state?.auth.profile)
@@ -98,123 +112,21 @@ const gotoedit=(id)=>{
     (!token) ? <Navigate to='/login' /> : <div className='container_home'>
       <div className='profile_div'>
       
-        {/* <div className='profile' style={{border:"2px solid teal"}}>
-          <div style={{backgroundColor:"teal"}}>
-        
-            <h2>User Details</h2>
-          </div>
-          <hr />
-          
 
-          <div className='count_number'>
-          <div className='count_all'>
-            <h3>All</h3>
-            <h3>{all}</h3>
-          </div>
-            
 
-          </div>
-          <div>
-            <button className='logout_button' onClick={() => handleLogout()} variant="contained">LOGOUT</button>
-          </div>
-          
-        
-        </div> */}
-      </div>
-    
-{/* <div className="todo" >
-      <div style={{border:"2px solid blue"}}>
-        <div style={{backgroundColor:"blue"}}>
-          <h2 >Todo</h2>
-        <hr />
-        </div>
-        <div>
-          {
-            tododata.map((el) => el.state == "todo" ?
-              <div style={{ border: "1px solid black", margin: "auto", marginBottom: "10px", width: "70%" }}>
-                <h4 style={{ border: "1px solid #cecece", width: "70%", margin: "auto" }}>{el.tag}</h4>
-                <h1>{el.title}</h1>
-                <p>{el.description}</p>
-                <h5>Sub-Task</h5>
-                {
-                  el.subTask.map((e) => (
-                    <div key={e.id} style={{ display: "flex", flexDirection: "row", justifyContent: "space-between",marginLeft:"10px", marginRight:"10px"}} >
-                        <p>{e.title}</p>
-                        <input type="checkbox" name="" id="" onChange={()=>toggle(e.id,el.id)} checked={e.status}/>
-                     
-                      
-                    </div>
-                  ))
-                }
-                <button onClick={()=>gotoedit(el.id)}>Edit task</button>
-              </div> : console.log())
-          }
-        </div>
-      </div>
-      </div> */}
-{/* 
-<div className="todo_progress">
-          <div style={{border:"2px solid yellow"}}>
-        <div style={{backgroundColor:"yellow"}}>
-          <h2>Progress</h2>
-          <hr />
-        </div>
-        <div>
-        {
-            tododata.map((el) => el.state === "inProgress" ?
-              <div style={{ border: "1px solid black", margin: "auto", marginBottom: "10px", width: "70%" }}>
-                <h3 style={{ border: "1px solid #cecece", width: "70%", margin: "auto" }}>{el.tag}</h3>
-                <h2>{el.title}</h2>
-                <p>{el.description}</p>
-                <h5>Sub-Task</h5>
-                {
-                  el.subTask.map((e) => (
-                    <div key={e.id} style={{ display: "flex", flexDirection: "row", justifyContent: "space-between",marginLeft:"10px", marginRight:"10px"}} >
-                         <h3>{e.title}</h3>
-                         <input type="checkbox" name="" id="" onChange={()=>toggle(e.id,el.id)} checked={e.status}/>
-                     
-                    </div>
-                  ))
-                }
-                 <button onClick={()=>gotoedit(el.id)}>Edit task</button>
-              </div> : console.log())
-          }
-        </div>
-      </div>
-      </div> */}
-<div className="todo_done">
 
-      <div style={{border:"2px solid gray"}}>
-        <div style={{backgroundColor:"lightgray"}}>
-          <h2>item</h2>
-          <hr />
-        </div>
-        <div>
-        {
-            tododata.map((el) => el.state === "done" ?
-              <div style={{ border: "1px solid black", margin: "auto", marginBottom: "10px", width: "100%" }}>
-                <h3 style={{ border: "1px solid #cecece", width: "30%", margin: "auto" }}>{el.tag}</h3>
-                <h2>{el.title}</h2>
-                <item/>
-              <p>bind </p>
-                <p>{el.description}</p>
-                <h5>Sub-Task</h5>
-                {
-                  el.subTask.map((e) => (
-                    <div key={e.id} style={{ display: "flex", flexDirection: "row", justifyContent: "space-between",marginLeft:"10px", marginRight:"10px"}} >
-                        <p>{e.title}</p>
-                        <input type="checkbox" name="" id="" onChange={()=>toggle(e.id,el.id)} checked={e.status}/>
-                      
-                    </div>
-                  ))  
-                }
-                 <button onClick={()=>gotoedit(el.id)}>Edit task</button>
-              </div> : console.log())
-          }
-        </div>
-        </div>
-      </div>
-    </div>
+{products.map((elem)=>{return(<>
+<h1>{elem.title}</h1>
+<img src={elem.image}/>
+<p>{elem.category}</p>
+<p>{elem.price}</p>
+</>)})}
+
+
+
+
+</div>
+</div>
   )
 }
 
